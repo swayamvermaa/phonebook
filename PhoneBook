@@ -1,0 +1,50 @@
+phone_book = {}
+
+def create_contact(name ,place , phone_number):
+    if phone_number in phone_book:
+        print("phone number already exist")
+    phone_book[phone_number] = {"Name": name, "Place": place}
+
+def remove_phone_num(phone_number):
+    if phone_number not in phone_book:
+        print("phone number does not  exist")
+    del phone_book[phone_number]
+
+def search_book(phone_number):
+    if phone_number in phone_book:
+        details = phone_book[phone_number]
+        for key,values in details.items():
+            print(key, " ", values)
+def display_number():
+    for phone_number, details in phone_book.items():
+        print("PHONE NUMBER : ",phone_number)
+        print("NAME: ", details["Name"])
+        print("PLACE : ", details["Place"])
+while True:
+    print("enter the Phone book menu")
+    print("press 1 : Create a contact")
+    print("press 2 : remove a contact")
+    print("press 3 : search a book")
+    print("press 4 : display a book")
+    choice = int(input("enter the choice from above points : "))
+    if choice == 1 :
+        phone_number = int(input("enter the phone number"))
+        print('------------')
+        place = input("enter the place of the person : ")
+        print('------------')
+        name = input("enter the name to save the contact : ")
+        print('------------')
+        create_contact(name,place ,phone_number)
+    elif choice == 2:
+        phone_number = int(input("enter the phone number"))
+        remove_phone_num(phone_number)
+        print("phone number successfully removed")
+    elif choice == 3:
+        phone_number = int(input("enter the phone number"))
+        print("-------DETAILS-------")
+        search_book(phone_number)
+    elif choice == 4:
+        print("-------ALL PHONE NUMBERS------- ")
+        display_number()
+    else:
+        print("invalid choice")
